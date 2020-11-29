@@ -1,0 +1,25 @@
+version: '3.4'
+
+services:
+  accountingbook:
+    image: ${DOCKER_REGISTRY-}accountingbook
+    ports:
+        - "5000:5000"
+    build:
+      context: .
+      dockerfile: ./docker/web/Dockerfile
+    depends_on:
+      - db   
+  db:
+    image: ${DOCKER_REGISTRY-}db
+    container_name: db  
+    ports:
+        - "5432:5432"
+    build:
+      context: .
+      dockerfile: ./docker/db/Dockerfile
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+volumes:
+    pgdata:
+        driver: local
