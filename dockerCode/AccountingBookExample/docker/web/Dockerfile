@@ -41,7 +41,7 @@ RUN dotnet publish "AccountingBook.Web/AccountingBook.Web.csproj" -c Release -r 
 FROM ubuntu
 RUN apt-get update
 RUN apt-get install -y
-RUN apt-get install libssl1.0.0
+RUN apt-get install libssl1.1
 
 
 #set up a directory in container
